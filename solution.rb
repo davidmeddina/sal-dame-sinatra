@@ -1,6 +1,13 @@
 require 'sinatra'
 
 get '/' do
-  @name = params[:nombre]
-  erb :index  
+  unless params[:nombre]
+    <<-HTML 
+    <h1>Hola desconocido!</h1> 
+    HTML
+  else
+    <<-HTML 
+    <h1>Hola #{params[:nombre]}!</h1> 
+    HTML
+  end  
 end
